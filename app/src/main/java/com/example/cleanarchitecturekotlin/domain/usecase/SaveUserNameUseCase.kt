@@ -1,5 +1,6 @@
 package com.example.cleanarchitecturekotlin.domain.usecase
 
+import android.text.Editable
 import com.example.cleanarchitecturekotlin.domain.models.SaveUserNameParam
 
 class SaveUserNameUseCase {

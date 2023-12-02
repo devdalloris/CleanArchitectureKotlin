@@ -14,16 +14,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="UserName" />
+        android:layout_gravity="start"
+        android:text="username" />
 
     <Button
         android:id="@+id/btnGetUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp" />
+        android:layout_marginBottom="4dp"
+        android:text="get username"
+        />
 
     <EditText
-        android:id="@+id/txSaveUserName"
+        android:id="@+id/etSaveUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -31,6 +34,7 @@
 
     <Button
         android:id="@+id/btnSaveUserName"
+        android:text="save name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp" />
