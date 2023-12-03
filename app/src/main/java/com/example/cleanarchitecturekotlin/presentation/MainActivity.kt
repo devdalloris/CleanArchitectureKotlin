@@ -2,7 +2,7 @@ package com.example.cleanarchitecturekotlin.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cleanarchitecturekotlin.data.UserRepositoryImpl
+import com.example.cleanarchitecturekotlin.data.repository.UserRepositoryImpl
 import com.example.cleanarchitecturekotlin.databinding.ActivityMainBinding
 import com.example.cleanarchitecturekotlin.domain.models.SaveUserNameParam
 import com.example.cleanarchitecturekotlin.domain.usecase.GetUserNameUseCase
