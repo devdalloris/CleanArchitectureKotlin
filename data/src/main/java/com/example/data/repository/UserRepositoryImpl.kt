@@ -1,10 +1,10 @@
-package com.example.cleanarchitecturekotlin.data.repository
+package com.example.data.repository
 
-import com.example.cleanarchitecturekotlin.data.storage.model.User
-import com.example.cleanarchitecturekotlin.data.storage.UserStorage
-import com.example.cleanarchitecturekotlin.domain.models.SaveUserNameParam
-import com.example.cleanarchitecturekotlin.domain.models.UserName
-import com.example.cleanarchitecturekotlin.domain.repository.UserRepository
+import com.example.data.storage.UserStorage
+import com.example.data.storage.model.User
+import com.example.domain.models.SaveUserNameParam
+import com.example.domain.models.UserName
+import com.example.domain.repository.UserRepository
 
 class UserRepositoryImpl(private val userStorage: UserStorage) : UserRepository {
     override fun saveName(saveParam: SaveUserNameParam): Boolean {

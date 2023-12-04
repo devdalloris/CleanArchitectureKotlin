@@ -1,3 +1,3 @@
-package com.example.cleanarchitecturekotlin.domain.models
+package com.example.domain.models
 
 data class UserName(val firstName: String, val lastName: String)

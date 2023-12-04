@@ -1,8 +1,8 @@
-package com.example.cleanarchitecturekotlin.data.storage.sharedprefs
+package com.example.data.storage.sharedprefs
 
 import android.content.Context
-import com.example.cleanarchitecturekotlin.data.storage.UserStorage
-import com.example.cleanarchitecturekotlin.data.storage.model.User
+import com.example.data.storage.UserStorage
+import com.example.data.storage.model.User
 
 private const val SHARED_PREFS_NAME = "shared_prefs_name"
 private const val KEY_FIRST_NAME = "firstName"

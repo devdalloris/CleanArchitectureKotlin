@@ -1,31 +1,26 @@
 package com.example.cleanarchitecturekotlin.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cleanarchitecturekotlin.data.repository.UserRepositoryImpl
-import com.example.cleanarchitecturekotlin.data.storage.sharedprefs.SharedPrefUserStorage
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cleanarchitecturekotlin.databinding.ActivityMainBinding
-import com.example.cleanarchitecturekotlin.domain.models.SaveUserNameParam
-import com.example.cleanarchitecturekotlin.domain.usecase.GetUserNameUseCase
-import com.example.cleanarchitecturekotlin.domain.usecase.SaveUserNameUseCase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
-        UserRepositoryImpl(
-            userStorage = SharedPrefUserStorage(
+        com.example.data.repository.UserRepositoryImpl(
+            userStorage = com.example.data.storage.sharedprefs.SharedPrefUserStorage(
                 context = applicationContext
             )
         )
     }
     private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
-        GetUserNameUseCase(
+        com.example.domain.usecase.GetUserNameUseCase(
             userRepository = userRepository
         )
     }
     private val saveUserNameParam by lazy(LazyThreadSafetyMode.NONE) {
-        SaveUserNameUseCase(
+        com.example.domain.usecase.SaveUserNameUseCase(
             userRepository = userRepository
         )
     }
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
         binding.btnSaveUserName.setOnClickListener {
             var text = binding.etSaveUserName.text.toString()
-            var param = SaveUserNameParam(text)
+            var param = com.example.domain.models.SaveUserNameParam(text)
             val result = saveUserNameParam.execute(param = param)
             binding.txUserName.text = "Save user = $result"
         }
