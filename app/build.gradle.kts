@@ -40,6 +40,11 @@ android {
 }
 
 dependencies {
+    val lifecycle_version = "2.6.2"
+    // ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    // LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation(project(path= ":domain"))
     implementation(project(path= ":data"))

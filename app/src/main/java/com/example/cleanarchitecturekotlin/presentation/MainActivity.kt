@@ -1,44 +1,37 @@
 package com.example.cleanarchitecturekotlin.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.cleanarchitecturekotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    private val userRepository by lazy(LazyThreadSafetyMode.NONE) {
-        com.example.data.repository.UserRepositoryImpl(
-            userStorage = com.example.data.storage.sharedprefs.SharedPrefUserStorage(
-                context = applicationContext
-            )
-        )
-    }
-    private val getUserNameUseCase by lazy(LazyThreadSafetyMode.NONE) {
-        com.example.domain.usecase.GetUserNameUseCase(
-            userRepository = userRepository
-        )
-    }
-    private val saveUserNameParam by lazy(LazyThreadSafetyMode.NONE) {
-        com.example.domain.usecase.SaveUserNameUseCase(
-            userRepository = userRepository
-        )
-    }
+
+
+    private lateinit var vm: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Log.e("AAA", "Activity created")
+
+        vm = ViewModelProvider(this, MainViewModelFactory(this)).get(MainViewModel::class.java)
+
+        vm.resultLive.observe(this) {
+            binding.txUserName.text = it
+        }
         binding.btnGetUserName.setOnClickListener {
-            var username = getUserNameUseCase.execute()
-            binding.txUserName.text = "${username.firstName} ${username.lastName}"
+            vm.load()
         }
         binding.btnSaveUserName.setOnClickListener {
             var text = binding.etSaveUserName.text.toString()
-            var param = com.example.domain.models.SaveUserNameParam(text)
-            val result = saveUserNameParam.execute(param = param)
-            binding.txUserName.text = "Save user = $result"
+            vm.save(text)
         }
     }
 }
