@@ -33,9 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-  buildFeatures{
-      viewBinding = true
-  }
+    buildFeatures {
+        viewBinding = true
+    }
 
 }
 
@@ -46,11 +46,19 @@ dependencies {
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
     implementation("androidx.core:core-ktx:1.10.1")
-    implementation(project(path= ":domain"))
-    implementation(project(path= ":data"))
+    implementation(project(path = ":domain"))
+    implementation(project(path = ":data"))
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Koin for Android
+    val koin_version = "3.1.0"
+    implementation("io.insert-koin:koin-android:$koin_version")
+    implementation("io.insert-koin:koin-core:$koin_version")
+    //testi
+    testImplementation("io.insert-koin:koin-test:$koin_version")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
